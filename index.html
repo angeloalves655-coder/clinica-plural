@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clínica Plural Psicologia</title>
+    <style>
+        :root {
+            --primary-color: #3b595a;
+            --accent-color: #25D366;
+            --text-color: #2C3E50;
+            --bg-color: #2a4849;
+            --card-bg: #FFFFFF;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+            background-image: linear-gradient(rgba(42, 72, 73, 0.85), rgba(42, 72, 73, 0.92));
+        }
+
+        .container {
+            width: 100%;
+            max-width: 480px;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 35px 25px;
+            border-radius: 24px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            backdrop-filter: blur(10px);
+        }
+
+        .logo-container {
+            margin-bottom: 20px;
+        }
+
+        .logo-container img {
+            width: 110px;
+            height: 110px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid #fff;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        h1 {
+            font-size: 22px;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 8px;
+            letter-spacing: 0.5px;
+        }
+
+        .subtitle {
+            font-size: 14px;
+            color: #555;
+            margin-bottom: 30px;
+            font-weight: 500;
+        }
+
+        /* Efeito de pulsação nos botões principais */
+        @keyframes pulse-animation {
+            0% { transform: scale(1); box-shadow: 0 4px 15px rgba(59, 89, 90, 0.2); }
+            50% { transform: scale(1.02); box-shadow: 0 6px 20px rgba(59, 89, 90, 0.4); }
+            100% { transform: scale(1); box-shadow: 0 4px 15px rgba(59, 89, 90, 0.2); }
+        }
+
+        .menu-btn {
+            display: block;
+            width: 100%;
+            background-color: #ffffff;
+            color: var(--primary-color);
+            text-decoration: none;
+            padding: 16px 20px;
+            margin-bottom: 15px;
+            border-radius: 16px;
+            font-weight: 600;
+            font-size: 15px;
+            border: 2px solid var(--primary-color);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            animation: pulse-animation 2.5s infinite;
+            text-align: center;
+        }
+
+        .menu-btn:hover {
+            background-color: var(--primary-color);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        /* Secções expansíveis */
+        .section-content {
+            display: none;
+            background: #f4f7f7;
+            padding: 20px 15px;
+            border-radius: 14px;
+            margin-bottom: 15px;
+            text-align: left;
+            animation: fadeIn 0.4s ease;
+            border-left: 4px solid var(--primary-color);
+        }
+
+        .section-content.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-5px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .section-content h3 {
+            font-size: 16px;
+            color: var(--primary-color);
+            margin-bottom: 12px;
+            text-align: center;
+        }
+
+        .section-content p {
+            font-size: 13px;
+            color: #555;
+            margin-bottom: 10px;
+        }
+
+        .whatsapp-btn {
+            display: block;
+            width: 100%;
+            background-color: var(--accent-color);
+            color: white;
+            text-decoration: none;
+            padding: 12px 15px;
+            margin-top: 10px;
+            margin-bottom: 8px;
+            border-radius: 10px;
+            font-weight: 600;
+            font-size: 13px;
+            text-align: center;
+            box-shadow: 0 3px 10px rgba(37, 211, 102, 0.2);
+            transition: background 0.2s;
+        }
+
+        .whatsapp-btn:hover {
+            background-color: #22bf5b;
+        }
+
+        .professional-card {
+            background: white;
+            padding: 12px;
+            border-radius: 10px;
+            margin-bottom: 12px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+
+        .professional-card h4 {
+            font-size: 14px;
+            color: var(--primary-color);
+            margin-bottom: 4px;
+        }
+
+        .professional-card p {
+            font-size: 12px;
+            color: #666;
+            margin-bottom: 8px;
+        }
+
+        .footer {
+            margin-top: 25px;
+            font-size: 11px;
+            color: #888;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="logo-container">
+            <img src="logo.jpg" alt="Logo Clínica Plural">
+        </div>
+
+        <h1>CLÍNICA PLURAL PSICOLOGIA</h1>
+        <p class="subtitle">Psicologia, Neuroavaliação e Atendimento para todas as idades</p>
+        
+        <!-- Botão Profissionais -->
+        <button class="menu-btn" onclick="toggleSection('profissionais-section')">
+            Conhecer nossas profissionais
+        </button>
+        <div id="profissionais-section" class="section-content">
+            <h3>Nossa Equipa</h3>
+            
+            <div class="professional-card">
+                <h4>Katiana</h4>
+                <p>Psicologia Clínica e Abordagem Infantil</p>
+                <a href="https://wa.me/5519998342633?text=Olá!%20Vim%20pelo%20site%20da%20Clínica%20Plural%20e%20gostaria%20de%20saber%20mais%20sobre%20os%20atendimentos%20com%20a%20Katiana." class="whatsapp-btn" target="_blank">Falar com Katiana (WhatsApp)</a>
+            </div>
+
+            <div class="professional-card">
+                <h4>Lilian</h4>
+                <p>Psicologia e Neuroavaliação</p>
+                <a href="https://wa.me/5519998238394?text=Olá!%20Vim%20pelo%20site%20da%20Clínica%20Plural%20e%20gostaria%20de%20saber%20mais%20sobre%20os%20atendimentos%20com%20a%20Lilian." class="whatsapp-btn" target="_blank">Falar com Lilian (WhatsApp)</a>
+            </div>
+
+            <div class="professional-card">
+                <h4>Tamires</h4>
+                <p>Psicoterapia e Desenvolvimento Infantojuvenil</p>
+                <a href="https://wa.me/5519971301538?text=Olá!%20Vim%20pelo%20site%20da%20Clínica%20Plural%20e%20gostaria%20de%20saber%20mais%20sobre%20os%20atendimentos%20com%20a%20Tamires." class="whatsapp-btn" target="_blank">Falar com Tamires (WhatsApp)</a>
+            </div>
+        </div>
+
+        <!-- Botão Serviços -->
+        <button class="menu-btn" onclick="toggleSection('servicos-section')">
+            Conhecer nossos serviços
+        </button>
+        <div id="servicos-section" class="section-content">
+            <h3>Nossos Serviços</h3>
+            <p>• Psicoterapia Infantil, Adolescente e Adulto</p>
+            <p>• Neuroavaliação Completa</p>
+            <p>• Orientação Parental e Escolar</p>
+            <p>• Atendimento Especializado</p>
+        </div>
+
+        <!-- Botão Onde Estamos (Localização) -->
+        <button class="menu-btn" onclick="toggleSection('local-section')">
+            Onde estamos
+        </button>
+        <div id="local-section" class="section-content">
+            <h3>Localização</h3>
+            <p>📍 Av. Monte Castelo, 798 - Centro, Santa Bárbara d'Oeste - SP</p>
+            <a href="https://maps.google.com/?q=Av.+Monte+Castelo,+798+-+Centro,+Santa+Bárbara+d'Oeste" class="whatsapp-btn" target="_blank" style="background-color: #3b595a;">Abrir no Google Maps</a>
+        </div>
+
+        <!-- Botão Instagram -->
+        <a href="https://instagram.com" class="menu-btn" target="_blank" style="animation-delay: 1s;">
+            Conheça nosso Instagram
+        </a>
+
+        <div class="footer">
+            &copy; 2026 Clínica Plural Psicologia. Todos os direitos reservados.
+        </div>
+    </div>
+
+    <script>
+        function toggleSection(sectionId) {
+            // Fecha todas as outras secções
+            const sections = document.querySelectorAll('.section-content');
+            sections.forEach(sec => {
+                if (sec.id !== sectionId) {
+                    sec.classList.remove('active');
+                }
+            });
+            // Alterna a secção clicada
+            const current = document.getElementById(sectionId);
+            current.classList.toggle('active');
+        }
+    </script>
+
+</body>
+</html>
